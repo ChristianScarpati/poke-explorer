@@ -1,0 +1,57 @@
+
+@function em-calc($size) {
+	$em-size: calc($size / 16px * 1em);
+	@return $em-size;
+}
+
+$transition-1: 100ms;
+$transition-2: 150ms;
+$transition-3: 200ms;
+
+
+/*** Border Radii ***/
+/********************/
+$radius-1: 0.2rem;
+$radius-2: 0.4rem;
+$radius-3: 0.6rem;
+$radius-4: 0.8rem;
+$radius-5: 1.2rem;
+$radius-6: 1.6rem;
+$radius-7: 3.2rem;
+$radius-round: 50%;
+$radius-pill: 999px;
+
+/*** Sizing Variables ***/
+/************************/
+$gutter-site: 3.2rem;
+$gutter-site-mobile: 1.6rem;
+
+/*** Breakpoints ***/
+/*******************/
+$media-xsm: em-calc(400px);
+$media-sm: em-calc(576px);
+$media-sm-max: em-calc(575px);
+$media-md: em-calc(769px);
+$media-md-max: em-calc(768px);
+$media-lg: em-calc(992px);
+$media-lg-max: em-calc(991px);
+$media-xl: em-calc(1024px);
+$media-xl-max: em-calc(1023px);
+$media-xxl: em-calc(1440px);
+$media-xxxl: em-calc(1600px);
+$media-xxxl-max: em-calc(1750px);
+
+/*** Shadows ***/
+/***************/
+
+// ! TODO for cards, maybe models, etc. ---> https://box-shadow.dev/
+
+/*** Z Indices ***/
+/*****************/
+$zindex-behind: -1;
+$zindex-min: 1;
+$zindex-1: 10;
+$zindex-2: 20;
+$zindex-3: 30;
+$zindex-4: 40;
+$zindex-max: 1000;
