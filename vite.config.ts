@@ -10,7 +10,7 @@ export default defineConfig({
     preprocessorOptions: {
       sass: {
         includePaths: [path.resolve(__dirname, "styles")],
-        prependData: `@import "_variables.scss";`
+        prependData: "@import '_variables.scss';"
       }
     }
   }
