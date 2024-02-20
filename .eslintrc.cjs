@@ -3,8 +3,10 @@ module.exports = {
   env: { browser: true, es2020: true },
   extends: [
     'eslint:recommended',
+    'prettier',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
+    'plugin:react/recommended',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
@@ -14,6 +16,11 @@ module.exports = {
     project: ['./tsconfig.json', './tsconfig.node.json'],
     tsconfigRootDir: __dirname,
   },
+  settings: {
+    react: {
+      version: 'detect',
+    }
+  },
   plugins: ['react-refresh', 'react'],
   rules: {
     'react-refresh/only-export-components': [
@@ -22,7 +29,7 @@ module.exports = {
     ],
     "@typescript-eslint/dot-notation": "off",
     //prettier
-    "prettier/prettier": 1, // 0 turn off prettier rules 
+    // "prettier/prettier": 1, // 0 turn off prettier rules 
     //General rules
     "arrow-parens": "off",
     "object-curly-newline": "off",
