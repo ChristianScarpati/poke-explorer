@@ -1,8 +1,24 @@
-import "./App.scss";
 import "../styles/global.scss";
+import { useFetchPokemonWithInfinityScroll } from "./hooks/usePokemon";
+import { useFetchNextPage } from "./hooks";
+import { HomePage } from "./pages/HomePage";
 
 function App() {
-	return <div>Hello POke exp</div>;
+	const {
+		data: pokemonList,
+		hasNextPage,
+		fetchNextPage,
+		isSuccess,
+		isLoading,
+	} = useFetchPokemonWithInfinityScroll();
+
+	useFetchNextPage(hasNextPage, fetchNextPage);
+
+	if (!isSuccess && isLoading) {
+		return <div>Loading...</div>;
+	}
+
+	return <div>{isSuccess && <HomePage pokemonList={pokemonList} />}</div>;
 }
 
 export default App;
