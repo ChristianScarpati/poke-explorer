@@ -1,0 +1,22 @@
+@import "../../../../../styles/variables.scss";
+
+.container {
+	display: flex;
+	border: 1px solid transparent;
+	border-radius: $radius-3;
+	line-height: 1.5;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+	user-select: none;
+    padding: 1.2rem 1.6rem;
+    
+    &--primary {
+        color: blue;
+        border-color: blue;
+    }
+
+	&--secondary {
+		color: red;
+		border-color: red;
+	}
+}
