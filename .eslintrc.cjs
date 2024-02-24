@@ -45,7 +45,7 @@ module.exports = {
     "lines-between-class-members": "off",
     "max-len": [
       "error",
-      130,
+      100,
       2,
       {
         "ignoreUrls": true,
