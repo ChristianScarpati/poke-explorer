@@ -1,0 +1,25 @@
+@import "../../../../../styles/variables.scss";
+
+.pokemon-image-container {
+	position: relative;
+	bottom: 40%;
+	height: 112%;
+	max-width: 30vw;
+	margin-left: auto;
+	left: 10rem;
+	transition: transform 0.7s;
+
+	&:hover {
+		transform: scale(1.1);
+	}
+
+	> img {
+		filter: drop-shadow(2px 4px 6px black);
+	}
+}
+
+@media (max-width: $media-sm) {
+	.pokemon-image-container {
+		left: 7rem;
+	}
+}

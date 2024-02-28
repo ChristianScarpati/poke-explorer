@@ -1,27 +1,19 @@
-import { useRef, useState } from "react";
-import { useOnClickOutside } from "../../../hooks";
-import Flex from "../atoms/Flex/Flex";
-import { Input } from "../atoms/Input";
-import { Button } from "../atoms/Button";
+import Flex from "../../atoms/Flex/Flex";
+import { Input } from "../../atoms/Input";
+import { Button } from "../../atoms/Button";
 import styles from "./SearchBar.module.scss";
-import { PokemonSearchResults } from "../atoms/PokemonSearchResults";
 
-type SearchBarProps = {
+export type SearchBarProps = {
 	searchText: string;
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	searchResults: string[];
+	setShowSearchResults: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-function SearchBar({ searchText, onChange, searchResults }: SearchBarProps) {
-	const [showSearchResults, setShowSearchResults] = useState<boolean>(true);
-	const resultsContainer = useRef<HTMLDivElement>(null);
-	useOnClickOutside(resultsContainer, () => setShowSearchResults(false));
-
+function SearchBar({ searchText, onChange, setShowSearchResults }: SearchBarProps) {
 	return (
 		<Flex
 			direction='column'
 			align='center'
-			ref={resultsContainer}
 			onClick={() => setShowSearchResults(true)}
 			onKeyDown={() => setShowSearchResults(true)}
 			tabIndex={0}
@@ -45,10 +37,6 @@ function SearchBar({ searchText, onChange, searchResults }: SearchBarProps) {
 					Search
 				</Button>
 			</div>
-			<PokemonSearchResults
-				showResults={searchResults}
-				showSearchResults={showSearchResults}
-			/>
 		</Flex>
 	);
 }
