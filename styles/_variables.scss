@@ -1,6 +1,7 @@
 
 @function em-calc($size) {
 	$em-size: calc($size / 16px * 1em);
+	
 	@return $em-size;
 }
 

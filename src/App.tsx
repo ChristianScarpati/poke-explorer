@@ -4,13 +4,8 @@ import { useFetchNextPage } from "./hooks";
 import { HomePage } from "./pages/HomePage";
 
 function App() {
-	const {
-		data: pokemonList,
-		hasNextPage,
-		fetchNextPage,
-		isSuccess,
-		isLoading,
-	} = useFetchPokemonWithInfinityScroll();
+	const { hasNextPage, fetchNextPage, isSuccess, isLoading } =
+		useFetchPokemonWithInfinityScroll();
 
 	useFetchNextPage(hasNextPage, fetchNextPage);
 
@@ -18,7 +13,7 @@ function App() {
 		return <div>Loading...</div>;
 	}
 
-	return <div>{isSuccess && <HomePage pokemonList={pokemonList} />}</div>;
+	return <div>{isSuccess && <HomePage />}</div>;
 }
 
 export default App;
