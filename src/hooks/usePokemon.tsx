@@ -1,21 +1,21 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import { getPokemonNames } from "../components/utils";
-import { GenericItemResult } from "../components/utils/types/pokemon";
-import { CALLFETCHLIMIT } from "../constants/common";
+import { getIdFromUrl, getPokemonNames, pokemonImgUrl } from "../components/utils";
+import { GenericItemResult, PokemonResult } from "../components/utils/types/pokemon";
+import { CALLFETCHLIMIT, IMG_ALT_KEY, IMG_URL_KEY, LINK_PATH_KEY } from "../constants/common";
 
-type Result = {
-	name: string;
-	url: string;
+const mapListResults = (fetchedResults: PokemonResult[]): GenericItemResult[] => {
+	return fetchedResults.map((item) => {
+		return {
+			...item,
+			name: `${item.name.slice(0, 1).toUpperCase() + item.name.slice(1)}`,
+			[LINK_PATH_KEY]: `/pokemon/${encodeURIComponent(item.name)}`,
+			[IMG_ALT_KEY]: `${item.name} artwork`,
+			[IMG_URL_KEY]: pokemonImgUrl(getIdFromUrl(item.url)),
+		};
+	});
 };
 
-const mapListResults = (fetchedResults: Result[]): GenericItemResult[] => {
-	return fetchedResults.map((item) => ({
-		...item,
-		name: `${item.name.slice(0, 1).toUpperCase() + item.name.slice(1)}`,
-	}));
-};
-
-const fetchPokemon = async (offset: number) => {
+const fetchPokemons = async (offset: number) => {
 	try {
 		const response = await fetch(
 			`https://pokeapi.co/api/v2/pokemon?limit=${CALLFETCHLIMIT}&offset=${offset}`
@@ -25,7 +25,7 @@ const fetchPokemon = async (offset: number) => {
 		}
 		const data = await response.json();
 
-		data.results = mapListResults(data.results as Result[]);
+		data.results = mapListResults(data.results as PokemonResult[]);
 		return data;
 	} catch (error) {
 		console.error("error: ", error);
@@ -43,7 +43,7 @@ export function useGetPokemonSuggestions(searchPokemonInputQuery: string) {
 }
 
 export const useFetchPokemonWithInfinityScroll = () => {
-	return useInfiniteQuery(["pokemonList"], ({ pageParam = 0 }) => fetchPokemon(pageParam), {
+	return useInfiniteQuery(["pokemonList"], ({ pageParam = 0 }) => fetchPokemons(pageParam), {
 		getNextPageParam: (lastPage) => {
 			if (lastPage.next) {
 				const url = new URL(lastPage.next!);

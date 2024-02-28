@@ -1,40 +1,37 @@
-/* eslint-disable react/function-component-definition */
 import { useState } from "react";
+
 import Flex from "../../UI/atoms/Flex/Flex";
 import { useGetPokemonSuggestions } from "../../../hooks/usePokemon";
 import { useDebounce } from "../../../hooks";
-import { SearchBar } from "../../UI/molecules";
+import { PokemonCard } from "../../UI/organisms/PokemonCard";
+import SearchBarResults from "../../UI/organisms/SearchBarResults/SearchBarResults";
 
-type Props = {
-	children: React.ReactNode;
-};
-
-const PokemonTemplate: React.FC<Props> = ({ children }): JSX.Element => {
+function PokemonTemplate(): JSX.Element {
 	const [searchPokemonInput, setSearchPokemonInput] = useState("");
 
 	const debounceSearchInputValue = useDebounce(searchPokemonInput, 3000);
-
 	const { data: dataPokemon } = useGetPokemonSuggestions(debounceSearchInputValue);
 
-	const handleSearchPokemon = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setSearchPokemonInput(e.target.value);
-	};
-
 	return (
-		<Flex direction='column' align='center' fullHeight>
-			<h1>Home Page</h1>
-			<Flex>
+		<div
+			// style={{
+			// 	position: "relative",
+			// }}
+		>
+			<Flex justify='center' style={{ marginBottom: "2rem" }}>
 				<section>
-					<SearchBar
+					<SearchBarResults
 						searchText={searchPokemonInput}
-						onChange={handleSearchPokemon}
+						onChange={(e) => setSearchPokemonInput(e.target.value)}
 						searchResults={dataPokemon ?? []}
 					/>
 				</section>
 			</Flex>
-			<main>{children}</main>
-		</Flex>
+			<h1>Home Page</h1>
+
+			<PokemonCard />
+		</div>
 	);
-};
+}
 
 export default PokemonTemplate;

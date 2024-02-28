@@ -1,4 +1,4 @@
-import { ComponentProps } from "../../../utils/types";
+import { ComponentProps } from "../../../utils/types/common";
 import cn from "classnames";
 import styles from "./Flex.module.scss";
 import { forwardRef } from "react";

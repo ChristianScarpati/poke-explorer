@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import cn from "classnames";
 import styles from "./Button.module.scss";
-import { ComponentProps } from "../../../utils/types";
+import { ComponentProps } from "../../../utils/types/common";
 
 type ButtonProps = JSX.IntrinsicElements["button"] &
 	ComponentProps<HTMLButtonElement> & {

@@ -1,15 +1,14 @@
 import styles from "./PokemonSearchResults.module.scss";
 
-type PropsPokemonSearchResults = {
+export type PropsPokemonSearchResults = {
 	showSearchResults: boolean;
-	showResults: object[] | string[];
+	searchResults: object[] | string[];
 };
 
-function PokemonSearchResults({ showResults, showSearchResults }: PropsPokemonSearchResults) {
-
+function PokemonSearchResults({ searchResults, showSearchResults }: PropsPokemonSearchResults) {
 	return (
 		<ul className={showSearchResults ? styles.container : styles.none}>
-			{(showResults as string[]).map((result) => (
+			{(searchResults as string[]).map((result) => (
 				<li key={result}>
 					<a href={`/pokemon/${encodeURIComponent(result)}`}>{result}</a>
 				</li>
