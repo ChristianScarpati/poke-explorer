@@ -1,9 +1,13 @@
 import { RefObject, useEffect } from "react";
 
+// eslint-disable-next-line no-unused-vars
 type EventHandler = (event?: MouseEvent | TouchEvent | KeyboardEvent) => void;
 
 // eslint-disable-next-line max-len
-const useOnClickOutside = (ref: RefObject<HTMLDivElement | HTMLUListElement>, handler: EventHandler) => {
+const useOnClickOutside = (
+	ref: RefObject<HTMLDivElement | HTMLUListElement>,
+	handler: EventHandler
+) => {
 	useEffect(() => {
 		const listener = (event: MouseEvent | TouchEvent) => {
 			// Do nothing if clicking ref's element or descendent elements
