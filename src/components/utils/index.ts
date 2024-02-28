@@ -1,1 +1,2 @@
-export * from "./getPokemonNames";
+export * from "./PokemonUtils";
+export * from "./types";
