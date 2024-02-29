@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ErrorBoundary } from "./utils";
 import { PokemonContextProvider } from "./context/index.ts";
+import { BrowserRouter } from "react-router-dom";
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -20,7 +21,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 			<ReactQueryDevtools position='bottom-left' initialIsOpen={false} />
 			<ErrorBoundary>
 				<PokemonContextProvider>
-					<App />
+					<BrowserRouter>
+						<App />
+					</BrowserRouter>
 				</PokemonContextProvider>
 			</ErrorBoundary>
 		</QueryClientProvider>

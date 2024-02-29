@@ -13,11 +13,7 @@ function PokemonTemplate(): JSX.Element {
 	const { data: dataPokemon } = useGetPokemonSuggestions(debounceSearchInputValue);
 
 	return (
-		<div
-			// style={{
-			// 	position: "relative",
-			// }}
-		>
+		<div>
 			<Flex justify='center' style={{ marginBottom: "2rem" }}>
 				<section>
 					<SearchBarResults
