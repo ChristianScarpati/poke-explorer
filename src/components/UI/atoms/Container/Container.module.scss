@@ -1,6 +1,18 @@
 .container {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	gap: 1rem;
-    background: red;
+
+	&--gap0 {
+		gap: 0rem;
+	}
+	&--gap1 {
+		gap: 1rem;
+	}
+	&--gap2 {
+		gap: 2rem;
+	}
+	&--margin-center {
+		margin: 0 auto;
+	}
 }

@@ -1,45 +1,45 @@
-
 #root {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
-    isolation: isolate;
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 2rem;
+	height: 100vh;
+	text-align: center;
+	isolation: isolate;
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
+	box-sizing: border-box;
+	margin: 0;
 
-    &::before,
-    &::after {
-        box-sizing: border-box;
-    }
+	&::before,
+	&::after {
+		box-sizing: border-box;
+	}
 }
 
 html,
 body {
-    font-family: 'Pokemon Solid', sans-serif;
-    line-height: 1.5;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
+	font-family: "Pokemon Solid", sans-serif;
+	line-height: 1.5;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
 }
 
 html {
-    font-size: 62.5%;
-    /* ! why ? ---> https://www.aleksandrhovhannisyan.com/blog/62-5-percent-font-size-trick/ */
+	font-size: 62.5%;
+	/* ! why ? ---> https://www.aleksandrhovhannisyan.com/blog/62-5-percent-font-size-trick/ */
 }
 
 img,
 picture {
-    display: block;
-    max-width: 100%;
-    border: 0;
+	display: block;
+	max-width: 100%;
+	border: 0;
 }
 
 a {
@@ -55,8 +55,8 @@ h3,
 h4,
 h5,
 h6 {
-    overflow-wrap: break-word;
-    margin: 0;
+	overflow-wrap: break-word;
+	margin: 0;
 }
 
 ul,
@@ -66,28 +66,31 @@ li {
 }
 
 hr {
-    box-sizing: content-box;
-    height: 0;
-    overflow: visible;
+	box-sizing: content-box;
+	height: 0;
+	overflow: visible;
 }
 
 b,
 strong {
-    font-weight: bolder;
+	font-weight: bolder;
 }
 
+span {
+	font-size: medium;
+}
 
 [type="checkbox"],
 [type="radio"] {
-    box-sizing: border-box;
-    padding: 0;
+	box-sizing: border-box;
+	padding: 0;
 }
 
 [type="number"]::-webkit-inner-spin-button,
 [type="number"]::-webkit-outer-spin-button {
-    height: auto;
+	height: auto;
 }
 
 [type="search"]::-webkit-search-decoration {
-    -webkit-appearance: none;
+	-webkit-appearance: none;
 }
