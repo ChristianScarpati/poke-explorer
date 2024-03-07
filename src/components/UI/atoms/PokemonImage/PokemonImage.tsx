@@ -1,24 +1,31 @@
-import useIsMobile from "../../../../hooks/useIsMobile";
+import { useIsMobile, useIsPokemonActive } from "../../../../hooks";
 import styles from "./PokemonImage.module.scss";
+
+import cn from "classnames";
 
 type PokemonProps = JSX.IntrinsicElements["img"] & {
 	url: string;
 	imgAlt: string;
-	linkPath?: string; // for router dom
 };
 
-function PokemonImage({ url, imgAlt, linkPath, ...rest }: PokemonProps) {
-	//! TODO: install react-router-dom and use Link instead of div
-	const isMobile = useIsMobile();
+function PokemonImage({ url, imgAlt, ...rest }: PokemonProps) {
+	const isMobile = useIsMobile({ maxWidth: 768 });
+	const pokemonName = imgAlt?.split(" ")[0] || "";
+
+	const hasPokemonSingleCard = useIsPokemonActive(pokemonName);
+
+	const classes = cn(styles["pokemon-image-container"], {
+		[styles["pokemon-image-container--single-card"]]: hasPokemonSingleCard,
+	});
 
 	return (
-		<div className={styles["pokemon-image-container"]}>
+		<div className={classes}>
 			<img
 				src={url}
 				alt={imgAlt}
-				{...rest}
 				width={!isMobile ? 150 : 80}
 				height={!isMobile ? 150 : 80}
+				{...rest}
 			/>
 		</div>
 	);

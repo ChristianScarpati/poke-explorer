@@ -1,8 +1,31 @@
+@import "../../../../../styles/variables.scss";
+
 .default {
-	font-family: "Pokemon Solid", sans-serif;
-	font-style: normal;
 	font-weight: 500;
 	font-size: 1.8rem;
 	line-height: 2.2rem;
 	letter-spacing: 0.0018em;
+
+	position: absolute;
+	bottom: 0.5rem;
+	left: 2.5rem;
+	z-index: $zindex-2;
+
+	&--hovered {
+		&:hover {
+			color: darkgreen;
+		}
+	}
+
+	&--h1 {
+		font-size: 3.2rem;
+	}
+
+	&--h2 {
+		font-size: 2.8rem;
+	}
+
+	&--relative {
+		position: relative;
+	}
 }

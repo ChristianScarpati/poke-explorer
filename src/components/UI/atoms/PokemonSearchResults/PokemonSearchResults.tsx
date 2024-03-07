@@ -1,18 +1,25 @@
+import { useNavigate } from "react-router-dom";
 import styles from "./PokemonSearchResults.module.scss";
+import { Caption } from "..";
 
 export type PropsPokemonSearchResults = {
 	showSearchResults: boolean;
-	searchResults: object[] | string[];
+	searchResults: string[];
 };
 
 function PokemonSearchResults({ searchResults, showSearchResults }: PropsPokemonSearchResults) {
+	const navigate = useNavigate();
 	return (
 		<ul className={showSearchResults ? styles.container : styles.none}>
-			{(searchResults as string[]).map((result) => (
-				<li key={result}>
-					<a href={`/pokemon/${encodeURIComponent(result)}`}>{result}</a>
-				</li>
-			))}
+			{searchResults.map((result) => {
+				return (
+					<li key={result}>
+						<div onClick={() => navigate(`/pokemon/${encodeURIComponent(result)}`)}>
+							<Caption>{result}</Caption>
+						</div>
+					</li>
+				);
+			})}
 		</ul>
 	);
 }

@@ -2,13 +2,15 @@
 	position: relative;
 	display: flex;
 	align-items: center;
-	padding: 3vw 5.5vw;
-	height: 20vw;
-	max-width: 38rem;
+	padding: 2vw 4.5vw 2vw 2vw;
+	height: 30vh;
+	max-width: 37rem;
+	flex-direction: column;
+	align-items: flex-start;
 	cursor: pointer;
 	border-radius: 8px;
 	transition: transform 0.7s;
-	box-shadow: 0 15px 40px 0 currentColor;
+	box-shadow: 0 14px 42px 0 currentColor;
 
 	&:hover {
 		transform: scale(1.05);
@@ -23,5 +25,42 @@
 		height: 100%;
 		background: linear-gradient(0deg, rgb(184 33 33 / 50%) 0%, rgb(166 159 46 / 0%) 100%);
 		border-radius: 8px;
+	}
+}
+
+.pokemonCardInfoAlone {
+	display: flex;
+	position: relative;
+	justify-self: center;
+	padding: 2vw 4.5vw 2vw 2vw;
+	height: 45vh;
+	max-width: 37rem;
+	flex-direction: column;
+	align-items: flex-start;
+	cursor: pointer;
+	border-radius: 8px;
+	transition: transform 0.7s;
+	box-shadow: 0 14px 42px 0 currentColor;
+
+	&:hover {
+		transform: scale(1.05);
+	}
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(0deg, rgb(184 33 33 / 50%) 0%, rgb(166 159 46 / 0%) 100%);
+		border-radius: 8px;
+	}
+}
+
+@media (width <= 470px) {
+	.pokemonCardInfo {
+		width: 30rem;
+		height: 15rem;
 	}
 }

@@ -5,6 +5,7 @@ import { useGetPokemonSuggestions } from "../../../hooks/usePokemon";
 import { useDebounce } from "../../../hooks";
 import { PokemonCard } from "../../UI/organisms/PokemonCard";
 import SearchBarResults from "../../UI/organisms/SearchBarResults/SearchBarResults";
+import { Container, Title } from "../../UI/atoms";
 
 function PokemonTemplate(): JSX.Element {
 	const [searchPokemonInput, setSearchPokemonInput] = useState("");
@@ -13,7 +14,7 @@ function PokemonTemplate(): JSX.Element {
 	const { data: dataPokemon } = useGetPokemonSuggestions(debounceSearchInputValue);
 
 	return (
-		<div>
+		<>
 			<Flex justify='center' style={{ marginBottom: "2rem" }}>
 				<section>
 					<SearchBarResults
@@ -23,10 +24,14 @@ function PokemonTemplate(): JSX.Element {
 					/>
 				</section>
 			</Flex>
-			<h1>Home Page</h1>
+			<Title h1 style={{ marginTop: "5rem" }} relative>
+				Home Page
+			</Title>
 
-			<PokemonCard />
-		</div>
+			<Container>
+				<PokemonCard />
+			</Container>
+		</>
 	);
 }
 

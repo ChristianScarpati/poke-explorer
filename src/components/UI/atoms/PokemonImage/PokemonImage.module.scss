@@ -2,24 +2,49 @@
 
 .pokemon-image-container {
 	position: relative;
-	bottom: 40%;
+	bottom: 50%;
 	height: 112%;
 	max-width: 30vw;
+	width: 23rem;
 	margin-left: auto;
-	left: 10rem;
+	left: 18.5rem;
 	transition: transform 0.7s;
+
 
 	&:hover {
 		transform: scale(1.1);
 	}
 
 	> img {
-		filter: drop-shadow(2px 4px 6px black);
+		filter: $filter-shadow-1;
+		position: absolute;
+		top: 5rem;
+		z-index: $zindex-1;
+	}
+
+	&--single-card {
+		top: 3rem;
 	}
 }
 
-@media (max-width: $media-sm) {
+@media (width >= 576px) and (width <= 768px) {
 	.pokemon-image-container {
-		left: 7rem;
+		left: calc(12rem + 8vw);
+		top: 5rem;
+
+		> img {
+			width: calc(80px + 0.5vw);
+		}
+	}
+}
+
+@media (width <= 575px) {
+	.pokemon-image-container {
+		left: 13rem;
+		top: 5.5rem;
+
+		> img {
+			width: 80px;
+		}
 	}
 }

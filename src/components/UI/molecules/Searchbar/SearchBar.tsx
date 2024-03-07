@@ -27,12 +27,7 @@ function SearchBar({ searchText, onChange, setShowSearchResults }: SearchBarProp
 					onChange={onChange}
 					placeholder='Search for a pokemon'
 				/>
-				<img
-					src='/public/images/svgs/searchIcon.svg'
-					alt='Search icon'
-					width={24}
-					height={24}
-				/>
+				<img src='/images/svgs/searchIcon.svg' alt='Search icon' width={24} height={24} />
 				<Button style={{ alignSelf: "end" }} color='primary'>
 					Search
 				</Button>

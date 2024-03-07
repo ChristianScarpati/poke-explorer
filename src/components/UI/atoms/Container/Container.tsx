@@ -7,14 +7,21 @@ type ContainerProps = JSX.IntrinsicElements["div"] &
 		width?: string;
 		height?: string;
 		gap?: number;
-		maxWidth?: string;
+		marginCenter?: boolean;
 		maxHeight?: string;
 	};
 
 const Container = forwardRef<HTMLDivElement, ContainerProps>(
-	({ children, width, height, gap, maxWidth, maxHeight, ...props }, ref) => {
-		// const classes = cn(styles["container"], className);
-		const classes = cn(styles["container"], styles.container);
+	({ children, width, height, gap, marginCenter, maxHeight, ...props }, ref) => {
+		const classes = cn(styles["container"], styles.container, {
+			[styles["container--gap0"]]: gap === 0,
+			[styles["container--gap1"]]: gap === 1,
+			[styles["container--gap2"]]: gap === 2,
+			[styles["container--width"]]: width,
+			[styles["container--height"]]: height,
+			[styles["container--margin-center"]]: marginCenter,
+			[styles["container--maxHeight"]]: maxHeight,
+		});
 
 		return (
 			<div className={classes} ref={ref} {...props}>

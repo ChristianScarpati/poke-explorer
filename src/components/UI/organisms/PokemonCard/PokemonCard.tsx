@@ -7,30 +7,31 @@ function PokemonCard() {
 	const { data, error } = usePokemonContext();
 
 	if (error) return <div>Error: {String(error)}</div>;
+	if (!data) return <div>Loading...</div>;
 
-	const renderPokemonList = () => {
-		const getAllPokemons: PokemonResult[] = data!.pages.reduce(
-			(acc: (string | unknown)[], page: { results: unknown }) => acc.concat(page.results),
-			[] as PokemonResult[]
-		);
+	const getAllPokemons: PokemonResult[] = data.pages.flatMap((page) => page.results);
 
-		return getAllPokemons.map((pokemon: PokemonResult) => {
-			return (
-				<PokemonCardInfo
-					key={pokemon?.name}
-					name={pokemon?.name}
-					url={pokemon?.url}
-					imgUrl={pokemon?.imgUrl}
-					linkPath={pokemon.linkPath}
-					imgAlt={pokemon.imgAlt}
-				>
-					{pokemon?.name}
-				</PokemonCardInfo>
-			);
-		});
-	};
-
-	return <div className={styles["pokemon-container-card"]}>{renderPokemonList()}</div>;
+	return (
+		<div className={styles["pokemon-container-card"]}>
+			{getAllPokemons.map((pokemon: PokemonResult) => {
+				return (
+					<PokemonCardInfo
+						key={pokemon.name}
+						id={pokemon.name}
+						name={pokemon.name}
+						url={pokemon.url}
+						imgUrl={pokemon.imgUrl}
+						linkPath={pokemon.linkPath}
+						imgAlt={pokemon.imgAlt}
+						abilities={pokemon.Abilities}
+						types={pokemon.type}
+					>
+						{pokemon.name}
+					</PokemonCardInfo>
+				);
+			})}
+		</div>
+	);
 }
 
 export default PokemonCard;

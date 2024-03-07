@@ -1,15 +1,27 @@
+@import "../../../../../styles/variables.scss";
+
 .container {
 	position: absolute;
 	justify-content: center;
 	display: flex;
 	flex-direction: column;
-	z-index: 1;
+	z-index: $zindex-2 + 1;
 
 	& li {
 		width: 35vw;
-		background-color: rgb(238, 255, 0);
+		background-color: burlywood;
 		color: gray;
-		line-height: 1.5;
+		line-height: 3.5;
+
+		> div > span {
+			color: #cacae2;
+			text-shadow: $text-shadow-1;
+			letter-spacing: 0.15em;
+		}
+
+		&:nth-child(odd) {
+			background: radial-gradient(darkgreen, cornsnilk);
+		}
 
 		& a {
 			color: inherit;
