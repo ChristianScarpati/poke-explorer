@@ -2,13 +2,11 @@ import { useEffect, useState } from "react";
 import { PokemonCardInfo } from "../../components/UI/molecules/PokemonCardInfo";
 import { PokemonCardDetailTemplate } from "../../components/templates/PokemonCardDetailTemplate";
 import { PokemonInfo, getPokemonInfoByName } from "../../components/utils";
+import { useLocation } from "react-router-dom";
 
-interface PokemonDetailsPageProps {
-	pokemonName: string;
-}
-
-function PokemonDetailsPage({ pokemonName }: PokemonDetailsPageProps) {
+function PokemonDetailsPage() {
 	const [selectedPokemon, setSelectedPokemon] = useState<PokemonInfo>();
+	const pokemonName = useLocation().pathname.split("/")[2];
 
 	useEffect(() => {
 		const fetchPokemonInfoCard = async () => {

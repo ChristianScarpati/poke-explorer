@@ -61,7 +61,7 @@ function PokemonCardInfo({
 		>
 			{!isPokemonCardSelected ? (
 				<>
-					<Container>
+					<Container gap={0.3}>
 						<PokemonImage url={imgUrl} imgAlt={imgAlt} />
 						<Caption>name : {name}</Caption>
 						{abilities && <Caption>Abilities: {pokemonAbilities}</Caption>}
