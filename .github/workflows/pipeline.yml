@@ -3,7 +3,7 @@ name: CI Pipeline
 on:
     push:
         branches:
-            - ${{ github.ref }}
+            - Implement-CI-with-husky-and-run-tests
     pull_request:
         branches: [main]
         types: [opened, synchronize, reopened]
