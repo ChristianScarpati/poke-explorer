@@ -5,7 +5,7 @@ import "@testing-library/jest-dom";
 
 const queryClient = new QueryClient();
 
-test("renders home page by default", () => {
+test("renders load home page by default", () => {
 	render(
 		<QueryClientProvider client={queryClient}>
 			<App />

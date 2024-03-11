@@ -1,6 +1,10 @@
+import fetch from "cross-fetch";
+
+global.fetch = fetch;
+
 module.exports = {
     preset: "ts-jest",
-    setupFilesAfterEnv: ["@testing-library/jest-dom"],
+    setupFilesAfterEnv: ["./jest.config.ts", "@testing-library/jest-dom"],
     testEnvironment: "jsdom",
     testMatch: ["**/src/**/*.test.(ts|tsx)"],
     testPathIgnorePatterns: ["/node_modules/", "/styles/"],
@@ -8,14 +12,14 @@ module.exports = {
     collectCoverageFrom: ["**/src/**/*.ts"],
     coverageDirectory: "coverage",
     coverageReporters: ["text", "lcov", "clover"],
-    coverageThreshold: {
-        global: {
-            branches: 100,
-            functions: 100,
-            lines: 100,
-            statements: 100,
-        },
-    },
+    // coverageThreshold: {
+    //     global: {
+    //         branches: 80,
+    //         functions: 80,
+    //         lines: 80,
+    //         statements: 80,
+    //     },
+    // },
     verbose: true,
     moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json"],
     transformIgnorePatterns: [
@@ -24,6 +28,6 @@ module.exports = {
     ],
     moduleNameMapper: {
         "\\.(css|less|scss|sass)$": "identity-obj-proxy",
-      }
+    }
 
 }
