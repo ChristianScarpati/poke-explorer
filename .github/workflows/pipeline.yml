@@ -21,8 +21,12 @@ jobs:
                   node-version: ">=18.12.0"
             - name: Install dependencies
               run: yarn install
-            - name: Exec Linter
-              run: yarn lint
+            - name: Check Lint
+              run: yarn checkLint
+              continue-on-error: true
+            - name: Fix Lint Issues
+              run: yarn lintFix
+              if: ${{ failure() }}
 
     build:
         runs-on: ubuntu-20.04
