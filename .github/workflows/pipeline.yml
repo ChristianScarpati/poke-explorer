@@ -1,0 +1,60 @@
+name: CI Pipeline
+
+on:
+    push:
+        branches:
+            - ${{ github.ref }}
+    pull_request:
+        branches: [main]
+        types: [opened, synchronize, reopened]
+
+jobs:
+    lint:
+        runs-on: ubuntu-20.04
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+            - uses: actions/setup-node@v4
+              with:
+                  cache: "yarn"
+                  node-version: ">=18.12.0"
+            - name: Install dependencies
+              run: yarn install
+            - name: Exec Linter
+              run: yarn lint
+
+    build:
+        runs-on: ubuntu-20.04
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+            - uses: actions/setup-node@v4
+              with:
+                  cache: "yarn"
+                  node-version: ">=18.12.0"
+            - name: Install dependencies
+              run: yarn install
+            - name: Build
+              run: yarn build
+
+    test:
+        needs: [lint, build]
+        runs-on: ubuntu-22.04
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+            - uses: actions/setup-node@v4
+              with:
+                  cache: "yarn"
+                  node-version: ">=18.12.0"
+            - name: Install dependencies
+              run: yarn install
+            - uses: actions/download-artifact@v4
+              with:
+                  name: dist
+                  path: dist
+            - name: Test
+              run: yarn test

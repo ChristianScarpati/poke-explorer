@@ -15,6 +15,7 @@ const Container = forwardRef<HTMLDivElement, ContainerProps>(
 	({ children, width, height, gap, marginCenter, maxHeight, ...props }, ref) => {
 		const classes = cn(styles["container"], styles.container, {
 			[styles["container--gap0"]]: gap === 0,
+			[styles["container--custom-gap"]]: gap && gap !== 0 && gap > 0 && gap < 0.51,
 			[styles["container--gap1"]]: gap === 1,
 			[styles["container--gap2"]]: gap === 2,
 			[styles["container--width"]]: width,

@@ -13,5 +13,21 @@ export default defineConfig({
         prependData: "@import '_variables.scss';"
       }
     }
+  },
+  server: {
+    fs: {
+      strict: true
+    }
+  },
+  optimizeDeps: {
+    exclude: ["jest"]
+  },
+  resolve: {
+    alias: {
+      "@tests": path.resolve(__dirname, "tests")
+    }
+  },
+  define: {
+    "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
   }
 })

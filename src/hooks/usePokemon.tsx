@@ -72,13 +72,20 @@ export function useGetPokemonSuggestions(searchPokemonInputQuery: string) {
 }
 
 export const useFetchPokemonWithInfinityScroll = () => {
-	return useInfiniteQuery(["pokemonList"], ({ pageParam = 0 }) => fetchPokemons(pageParam), {
-		getNextPageParam: (lastPage) => {
-			if (lastPage.next) {
-				const url = new URL(lastPage.next!);
-				return url.searchParams.get("offset");
-			}
-			return undefined;
-		},
-	});
+	const { data, fetchNextPage, hasNextPage, isSuccess, isLoading, ...rest } = useInfiniteQuery(
+		["pokemonList"],
+		({ pageParam = 0 }) => fetchPokemons(pageParam),
+		{
+			getNextPageParam: (lastPage) => {
+				if (lastPage && lastPage.next) {
+					const url = new URL(lastPage.next);
+					return url.searchParams.get("offset");
+				}
+				return undefined;
+			},
+		}
+	);
+	const selectedPokemonName = data && data.pages && data.pages[0]?.results[0]?.name;
+
+	return { data, fetchNextPage, hasNextPage, isSuccess, isLoading, selectedPokemonName, ...rest };
 };
